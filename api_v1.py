@@ -114,7 +114,7 @@ async def search_products(
                availability, model, material, item_length, length, clasp, model_number, link
         FROM amazon_watches
         WHERE {where_clause}
-        ORDER BY overall_rating DESC, total_reviews DESC
+        ORDER BY total_reviews DESC, overall_rating DESC
         LIMIT %s OFFSET %s;
     """
 
@@ -159,7 +159,7 @@ async def get_top_products(limit: int = Query(10, ge=1)):
                        CAST(REPLACE(SUBSTRING(total_reviews FROM '([0-9,]+)')::TEXT, ',', '') AS INTEGER) AS total_reviews,
                        availability, model, material, item_length, length, clasp, model_number, link
                 FROM amazon_watches
-                ORDER BY overall_rating DESC, total_reviews DESC
+                ORDER BY total_reviews DESC, overall_rating DESC
                 LIMIT %s;
             """
             cursor.execute(query, (limit,))
