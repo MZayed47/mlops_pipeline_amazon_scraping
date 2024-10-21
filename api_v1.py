@@ -62,45 +62,66 @@ def extract_review_count(value: str) -> int:
 
 # GET /products
 @app.get("/products", response_model=List[Product])
-async def get_products(
-    brand: Optional[str] = None,
-    model: Optional[str] = None,
-    min_price: Optional[float] = None,
-    max_price: Optional[float] = None,
-    min_rating: Optional[float] = None,
+async def search_products(
+    brand: str = Query(None),
+    model: str = Query(None),
+    min_price: float = Query(None),
+    max_price: float = Query(None),
+    min_rating: float = Query(None),
     page: int = Query(1, ge=1),
     limit: int = Query(10, ge=1)
 ):
+    offset = (page - 1) * limit
+    params = []  # Start with an empty list
+    conditions = []
+
+    # Add brand filtering condition
+    if brand:
+        conditions.append("title ILIKE %s")
+        params.append(f"%{brand}%")
+    
+    # Add model filtering condition
+    if model:
+        conditions.append("model ILIKE %s")
+        params.append(f"%{model}%")
+    
+    # Add price filtering condition
+    if min_price is not None:
+        conditions.append("CAST(price AS FLOAT) >= %s")
+        params.append(min_price)
+    
+    if max_price is not None:
+        conditions.append("CAST(price AS FLOAT) <= %s")
+        params.append(max_price)
+    
+    # Add rating filtering condition
+    if min_rating is not None:
+        conditions.append("CAST(SUBSTRING(overall_rating FROM '([0-9]+(\\.[0-9]+)?)') AS FLOAT) >= %s")
+        params.append(min_rating)
+
+    # Add limit and offset at the end
+    params.append(limit)
+    params.append(offset)
+
+    # Build the WHERE clause from conditions
+    where_clause = " AND ".join(conditions) if conditions else "TRUE"
+    
+    # Final query
+    query = f"""
+        SELECT id, title, price,
+               CAST(SUBSTRING(overall_rating FROM '([0-9]+(\\.[0-9]+)?)') AS FLOAT) AS overall_rating,
+               CAST(REPLACE(SUBSTRING(total_reviews FROM '([0-9,]+)')::TEXT, ',', '') AS INTEGER) AS total_reviews,
+               availability, model, material, item_length, length, clasp, model_number, link
+        FROM amazon_watches
+        WHERE {where_clause}
+        ORDER BY overall_rating DESC, total_reviews DESC
+        LIMIT %s OFFSET %s;
+    """
+
+    # Execute query with the prepared params list
     conn = connect_db()
     try:
         with conn.cursor() as cursor:
-            query = "SELECT * FROM amazon_watches WHERE TRUE"
-            filters = []
-            params = []
-
-            if brand:
-                filters.append("title ILIKE %s")
-                params.append(f"%{brand}%")
-            if model:
-                filters.append("model ILIKE %s")
-                params.append(f"%{model}%")
-            if min_price:
-                filters.append("CAST(price AS FLOAT) >= %s")
-                params.append(min_price)
-            if max_price:
-                filters.append("CAST(price AS FLOAT) <= %s")
-                params.append(max_price)
-            if min_rating:
-                filters.append("CAST(overall_rating AS FLOAT) >= %s")
-                params.append(min_rating)
-
-            if filters:
-                query += " AND " + " AND ".join(filters)
-
-            query += " ORDER BY CAST(overall_rating AS FLOAT) DESC LIMIT %s OFFSET %s"
-            params.append(limit)
-            params.append((page - 1) * limit)
-
             cursor.execute(query, params)
             products = cursor.fetchall()
 
@@ -109,8 +130,8 @@ async def get_products(
                     "id": row[0],
                     "title": row[1],
                     "price": row[2],
-                    "overall_rating": extract_numeric(row[3]),
-                    "total_reviews": extract_review_count(row[4]),
+                    "overall_rating": row[3],
+                    "total_reviews": row[4],
                     "availability": row[5],
                     "model": row[6],
                     "material": row[7],
