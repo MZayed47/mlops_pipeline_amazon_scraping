@@ -8,7 +8,6 @@ __pycache__/
 
 # others
 *.pdf
-*.json
 
 # Distribution / packaging
 .Python
