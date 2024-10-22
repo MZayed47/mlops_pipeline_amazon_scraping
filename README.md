@@ -1,6 +1,3 @@
-Here’s a sample API documentation in markdown format for your FastAPI application:
-
-```markdown
 # Amazon Product and Review API Documentation
 
 ## Overview
@@ -209,6 +206,3 @@ uvicorn main:app --reload
 
 ## Author
 Mashrukh – Sr Data Scientist at SSL Wireless.
-```
-
-You can save this as `api_documentation.md`. Let me know if you need any further adjustments!
