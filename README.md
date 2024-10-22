@@ -13,7 +13,7 @@
     - [A. Set Up a Conda Environment](#a-set-up-a-conda-environment)
     - [B. API Organization](#b-api-organization)
     - [C. Dockerization](#c-dockerization)
-    - [D. Run The Scraping Pipeline in "amazon_watches_v2.py" using cron](#d-run-the-scraping-pipeline-in-amazon_watches_v2py-using-cron)
+    - [D. Run The Scraping Pipeline in "amazon_watches_v2.py" using cron](#d-run-the-scrapping-pipeline-in-amazon_watches_v2py-using-cron)
 7. [Author](#author)
 
 ---
