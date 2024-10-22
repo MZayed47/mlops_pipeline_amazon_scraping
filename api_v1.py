@@ -4,6 +4,15 @@ import psycopg2
 import json
 from typing import List, Optional, Dict
 import re
+import uvicorn
+from utility_v1 import *
+
+
+global documents, document_embeddings, index
+
+documents = fetch_data_as_documents()
+document_embeddings = generate_document_embeddings(documents)
+index = create_faiss_index(document_embeddings)
 
 
 # Load database credentials
@@ -48,6 +57,10 @@ class Review(BaseModel):
     review_text: str
     review_rating: str
     review_date: str
+
+
+class AskRequest(BaseModel):
+    query: str
 
 
 # Helper function to extract numeric values
@@ -223,7 +236,24 @@ async def get_product_reviews(product_id: int, page: int = Query(1, ge=1), limit
         conn.close()
 
 
+# POST /ask
+@app.post("/ask")
+async def ask_question(request: AskRequest):
+    query = request.query
+
+    # Step 3: Generate the query embedding for the input query
+    query_embedding = generate_query_embedding(query)
+
+    # Step 4: Retrieve relevant document indices using the FAISS index
+    top_docs_indices = search(query_embedding, index)
+
+    # Step 5: Fetch the top documents based on indices
+    top_docs = [documents[i] for i in top_docs_indices]
+    unique_top_docs = list(dict.fromkeys(top_docs))
+
+    return {"query": query, "retrieved_documents": unique_top_docs}
+
+
 if __name__ == '__main__':
-    import uvicorn
     uvicorn.run(app, host="127.0.0.1", port=8000)
 

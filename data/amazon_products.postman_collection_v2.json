@@ -1,0 +1,484 @@
+{
+	"info": {
+		"_postman_id": "875ec58e-d155-49a4-ba55-b8a7269be248",
+		"name": "amazon_products",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21724425"
+	},
+	"item": [
+		{
+			"name": "reviews",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://0.0.0.0:8000/products/4/reviews?page=1&limit=10",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "8000",
+					"path": [
+						"products",
+						"4",
+						"reviews"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "limit",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "reviews_sample",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://0.0.0.0:8000/products/4/reviews?page=1&limit=10",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "8000",
+							"path": [
+								"products",
+								"4",
+								"reviews"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "date",
+							"value": "Mon, 21 Oct 2024 12:55:24 GMT"
+						},
+						{
+							"key": "server",
+							"value": "uvicorn"
+						},
+						{
+							"key": "content-length",
+							"value": "7519"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"reviewer_name\": \"Freddy Ard\",\n        \"review_text\": \"For quite some time I have wanted to purchase the Casio G-Shock DW5600, but when I considered the additional features of the Casio G-Shock GWM5610, I decided to spend twice the $.  My only other G-Shock experience (excellent) is with a DW6900, which I have owned about 5 years, considered my beater or tough duty/activity watch.  The handy instruction booklet got me reasonably familiar with the functions and settings sequences, although I might have to refer again on certain matters.  Accordingly, set up to my preferences was quick, simple, and in short order I began the enjoyment of this digital watch.The black resin band is secured comfortably and easily by a traditional polished silver buckle and tongue.  Although describe in larger metrics, I would say the face appears much along the lines of 40mm on my 6-7/8\\\" wrist.  It is relatively lightweight, and generally comfortable to wear.  The excellent backlight far outperforms that of any I have seen on the Casio products.  All the functions perform outstandingly.  The solar-power and atomic timekeeping are really cool features, and frankly, seem to account for increase in price over the DW5600.  Since I have only had mine a few days, I can't yet attest to the durability, but have no doubts that it is rugged and can stand up to anything I will give it.  I dig the appearance and the display, and might say my expectations are exceeded.Now, for the more \\\"classic\\\" piece, I guess I will have to order me a companion DW5600 to alternate with my GWM5610.\",\n        \"review_rating\": \"5.0 out of 5 stars\",\n        \"review_date\": \"Reviewed in the United States on April 5, 2024\"\n    },\n    {\n        \"reviewer_name\": \"D.B.\",\n        \"review_text\": \"This is perhaps as close to a perfect digital watch as you can get.  Besides the toughness of a G=Shock, it's got all the daily features one may need (alarm - which you can set up to 5, stopwatch and countdown timer).  It also has world time, which is a nice feature to have when travelling.  When in stop watch and time modes, the current time is displayed in the upper right corner of the display where the date normally is.  It's solar powered, and the display shows how much power the watch has.  Multi-band 6 is another feature, so it automatically sets the time once it receives a signal from an atomic clock transmitter.  YMMV with this feature though.  I have difficulty receiving the signal being on the U.S. east coast (the transmitter is in Colorado).  There are phone apps you can use to strengthen the signal if normal reception fails.  Despite this, it can be manually set if needed.Visibility of the display is an upgrade over the DW-5600.  It's more clear, and more visible at different viewing angles.  The standard backlight is now LED instead of the classic electroluminescence.  Some prefer the latter.  This may or may not be a deal breaker based on personal preference, but considering what this watch has to offer, it should only be a consideration in the bigger picture.The watch offers a great fit for G-Shock.  With its slim profile, it lacks the bulk of many of the other G-Shock models out there.  It's very comfortable to wear on different size wrists, though the strap may not be everyone's cup of tea.The design is very much retro, harkening back to the 1983 original square with the red border.For the price of this watch, it really is a great value.  It's also possibly the only digital watch you'll ever need unless you want other functions like tides, barometers, etc.  In my collection, this watch is one of my favorites. There's a good chance it will become one of yours too.\",\n        \"review_rating\": \"5.0 out of 5 stars\",\n        \"review_date\": \"Reviewed in the United States on February 18, 2024\"\n    },\n    {\n        \"reviewer_name\": \"Dennis F. Cwik\",\n        \"review_text\": \"For the past 10 years, I've thought that mechanical watches had so much charm and passion, while quartz watches were soulless devices. I picked up this watch to be a \\\"beater\\\" when my automatic watches weren't suitable, but I've actually grown quite fond of the GW-M5610. What's not to love about a light, small, tough-as-nails, super accurate, solar watch?I got this watch from Amazon on April 5, 2019 (in the USA). First thing I noticed was that it did not come in the hexagonal tin box that a lot of older online reviews show, but a flimsy cardboard box with a simple display holder. At first I was annoyed, but honestly the box would have just been tucked away in storage with other watch boxes that never see any use.After unboxing, you'll find a warranty card, a handful of manuals in various languages, and the watch in a simple plastic bag (no protective stickers on the crystal or caseback, no fancy hangtags). I immediately checked out when the last sync time was (bottom right button), which happened to be on November 1. Assuming this sync happened before it was packaged up, that meant it was sitting for 5 months in the dark, but it still showed high power (as indicated at the bottom of the display, where there's a L, M, H meter). Yay for power saving mode!Next step was to set the timezone. The manual states that the default timezone after losing all power is Tokyo. I assumed this was what the watch would be shipped with, but mine was set to NYC by default. I'm curious if watches sent to the USA are set this way, or if someone played around with this watch. After selecting my local timezone (Pacific), it was only 2 seconds slow! I know quartz watches are accurate but that is phenomenal, especially considering the manual states +/- 15 seconds per month without a signal calibration.Speaking of signal calibration, I've had my watch automatically sync about every other night in Seattle. I have an old Casio Waveceptor (10 years old) that never syncs anymore. I don't know if that's because it has become defective, or the GW-M5610 can pick up a weaker signal strength. Regardless, there's no need to worry about missing a few nights in a row of syncing, as it'll still be very accurate.The caseback on mine was machined and not stamped, with crisp engraving (FYI, I removed the serial number from the image, normally found on the bottom of the caseback). As far as I know, only older models will have the stamped, rounded version. While on the wrist, it feels just as comfortable as any rounded caseback I've had.I really like that the resin strap is already pre-rounded/pre-shaped. I've had tough, flat rubber/plastic/resin straps on other watches that were incredibly uncomfortable (I'm looking at you, SKX009). On my 6.25\\\" wrist, the watch strap keeper is right at the end, and there's maybe 1/4\\\" excess strap sticking out. If your wrist is smaller, you'll unfortunately have more strap sticking out, which will probably be a bit annoying.Other reviews state that the A-EL feature didn't work on their watches, which is the auto-illumination when you tilt your wrist up. Mine works flawlessly. I'm curious if this was an issue with earlier models that has since been addressed.The only minor annoyance I can find with this watch is the non-standard lug width/strap. I think the stock strap fits it perfectly (both in terms of comfort and aesthetics) and have no desire to change it, but it's proprietary. That being said, I'm sure it won't be hard to find a replacement strap if needed.The GW-M5610 has a perfect blend of retro styling, useful functions, durability, comfort, and laziness (it sets itself!).\",\n        \"review_rating\": \"5.0 out of 5 stars\",\n        \"review_date\": \"Reviewed in the United States on April 11, 2019\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "products_top",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://0.0.0.0:8000/products/top?page=1&limit=10",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "8000",
+					"path": [
+						"products",
+						"top"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "limit",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "top_products_sample",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://0.0.0.0:8000/products/top?page=1&limit=10",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "8000",
+							"path": [
+								"products",
+								"top"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "date",
+							"value": "Mon, 21 Oct 2024 13:32:01 GMT"
+						},
+						{
+							"key": "server",
+							"value": "uvicorn"
+						},
+						{
+							"key": "content-length",
+							"value": "8480"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": 7,\n        \"title\": \"Casio Men's MDV106-1AV 200 M WR Black Dive Watch (MDV106-1A)\",\n        \"price\": 52.11,\n        \"overall_rating\": 4.7,\n        \"total_reviews\": 21241,\n        \"availability\": \"In Stock\",\n        \"model\": null,\n        \"material\": \"Resin\",\n        \"item_length\": \"1.74 inches\",\n        \"length\": null,\n        \"clasp\": \"Buckle\",\n        \"model_number\": \"MDV106-1A\",\n        \"link\": \"https://www.amazon.com/Casio-MDV106-1AV-Analog-Watch-Black/dp/B009KYJAJY/ref=sr_1_7?dib=eyJ2IjoiMSJ9.ITEesU5GMGf8jtr8aIKPGq679iYQQOjTzE53ohj5Re92rq2GJAxiyyZLF5jDNzsRs4YFHRFNjy-rdxOw9sx2kU1UJBH80Uji5EQxuNcHz6rBn9hezmxvKsrSgqMjVZWLZSATL6XbxtqURSrN-Naeq5edjGiyU8NeKF_O6jGu1G_w_VIYvzdwKW6Qh0A_-TDiwK_l3PHYTwUcc-P_dRnDgzWZeYtXJ86nqxscgKb71VW1lLS50fInY1gpPxb3Zq5JdQdukQv5SmoBtcn2ReejLtiE9Y52ov_MQMl6vY558Wg.-6yS_UqpRevjXThLACNEg7DlTQgO53US2vFig-zd9lQ&dib_tag=se&qid=1729512850&s=fashion-mens-intl-ship&sr=1-7\"\n    },\n    {\n        \"id\": 19,\n        \"title\": \"Casio Men's MDV106-1AV 200 M WR Black Dive Watch (MDV106-1A)\",\n        \"price\": 52.11,\n        \"overall_rating\": 4.7,\n        \"total_reviews\": 21241,\n        \"availability\": \"In Stock\",\n        \"model\": null,\n        \"material\": \"Resin\",\n        \"item_length\": \"1.74 inches\",\n        \"length\": null,\n        \"clasp\": \"Buckle\",\n        \"model_number\": \"MDV106-1A\",\n        \"link\": \"https://www.amazon.com/Casio-MDV106-1AV-Analog-Watch-Black/dp/B009KYJAJY/ref=sr_1_6?dib=eyJ2IjoiMSJ9.ITEesU5GMGf8jtr8aIKPGq679iYQQOjTzE53ohj5Re92rq2GJAxiyyZLF5jDNzsRs4YFHRFNjy-rdxOw9sx2kU1UJBH80Uji5EQxuNcHz6qOXgAEGTiC3n-D2ucN0dGgXv6OOXHpw7MT2Tp-c0d40NxoWG0R2520TrpXW8PY5tiS_Ax7MhambR3RFp7GKo6e8fn6r1redYvrYRZ_pzFpC_K0mtvTDyfj8BZutw0aBPNNsKgp7zlHaSY-VJtvWcZe66psgqJMDJZltXHs-o9fOgX2-fm7Q3cKy7jlDwzdygk.FmoV8TRpofxIgN7Ia5Pa1I5_hFIrYaucaYgRWz_Y3t4&dib_tag=se&qid=1729513210&s=fashion-mens-intl-ship&sr=1-6\"\n    },\n    {\n        \"id\": 20,\n        \"title\": \"Casio Men's Vintage A158WA-1 Water Resistant Digital Watch\",\n        \"price\": 20.99,\n        \"overall_rating\": 4.6,\n        \"total_reviews\": 44422,\n        \"availability\": \"In Stock\",\n        \"model\": null,\n        \"material\": null,\n        \"item_length\": null,\n        \"length\": null,\n        \"clasp\": \"Foldover Clasp\",\n        \"model_number\": \"A158W-1\",\n        \"link\": \"https://www.amazon.com/Casio-A158WA-1-Water-Resistant-Digital/dp/B000GAYQJ0/ref=sr_1_7?dib=eyJ2IjoiMSJ9.ITEesU5GMGf8jtr8aIKPGq679iYQQOjTzE53ohj5Re92rq2GJAxiyyZLF5jDNzsRs4YFHRFNjy-rdxOw9sx2kU1UJBH80Uji5EQxuNcHz6qOXgAEGTiC3n-D2ucN0dGgXv6OOXHpw7MT2Tp-c0d40NxoWG0R2520TrpXW8PY5tiS_Ax7MhambR3RFp7GKo6e8fn6r1redYvrYRZ_pzFpC_K0mtvTDyfj8BZutw0aBPNNsKgp7zlHaSY-VJtvWcZe66psgqJMDJZltXHs-o9fOgX2-fm7Q3cKy7jlDwzdygk.FmoV8TRpofxIgN7Ia5Pa1I5_hFIrYaucaYgRWz_Y3t4&dib_tag=se&qid=1729513210&s=fashion-mens-intl-ship&sr=1-7\"\n    },\n    {\n        \"id\": 8,\n        \"title\": \"Casio Men's Vintage A158WA-1 Water Resistant Digital Watch\",\n        \"price\": 20.99,\n        \"overall_rating\": 4.6,\n        \"total_reviews\": 44422,\n        \"availability\": \"In Stock\",\n        \"model\": null,\n        \"material\": null,\n        \"item_length\": null,\n        \"length\": null,\n        \"clasp\": \"Foldover Clasp\",\n        \"model_number\": \"A158W-1\",\n        \"link\": \"https://www.amazon.com/Casio-A158WA-1-Water-Resistant-Digital/dp/B000GAYQJ0/ref=sr_1_8?dib=eyJ2IjoiMSJ9.ITEesU5GMGf8jtr8aIKPGq679iYQQOjTzE53ohj5Re92rq2GJAxiyyZLF5jDNzsRs4YFHRFNjy-rdxOw9sx2kU1UJBH80Uji5EQxuNcHz6rBn9hezmxvKsrSgqMjVZWLZSATL6XbxtqURSrN-Naeq5edjGiyU8NeKF_O6jGu1G_w_VIYvzdwKW6Qh0A_-TDiwK_l3PHYTwUcc-P_dRnDgzWZeYtXJ86nqxscgKb71VW1lLS50fInY1gpPxb3Zq5JdQdukQv5SmoBtcn2ReejLtiE9Y52ov_MQMl6vY558Wg.-6yS_UqpRevjXThLACNEg7DlTQgO53US2vFig-zd9lQ&dib_tag=se&qid=1729512850&s=fashion-mens-intl-ship&sr=1-8\"\n    },\n    {\n        \"id\": 10,\n        \"title\": \"Casio Men's Classic Stainless Steel Japanese-Quartz Stainless-Steel Strap, Silver, 21 Casual Watch (Model: AE1200WHD-1A)\",\n        \"price\": 27.5,\n        \"overall_rating\": 4.6,\n        \"total_reviews\": 12542,\n        \"availability\": \"In Stock\",\n        \"model\": null,\n        \"material\": null,\n        \"item_length\": null,\n        \"length\": null,\n        \"clasp\": \"Triple-fold-over-clasp-with-double-push-button-safety\",\n        \"model_number\": \"AE1200WHD-1A\",\n        \"link\": \"https://www.amazon.com/Casio-AE1200WHD-1A-Stainless-Steel-Digital/dp/B0094B79CI/ref=sr_1_10?dib=eyJ2IjoiMSJ9.ITEesU5GMGf8jtr8aIKPGq679iYQQOjTzE53ohj5Re92rq2GJAxiyyZLF5jDNzsRs4YFHRFNjy-rdxOw9sx2kU1UJBH80Uji5EQxuNcHz6rBn9hezmxvKsrSgqMjVZWLZSATL6XbxtqURSrN-Naeq5edjGiyU8NeKF_O6jGu1G_w_VIYvzdwKW6Qh0A_-TDiwK_l3PHYTwUcc-P_dRnDgzWZeYtXJ86nqxscgKb71VW1lLS50fInY1gpPxb3Zq5JdQdukQv5SmoBtcn2ReejLtiE9Y52ov_MQMl6vY558Wg.-6yS_UqpRevjXThLACNEg7DlTQgO53US2vFig-zd9lQ&dib_tag=se&qid=1729512850&s=fashion-mens-intl-ship&sr=1-10\"\n    },\n    {\n        \"id\": 11,\n        \"title\": \"Cressi Genuine Watchband, Battery Replacement Dive Watch Computer - Official Spare Parts\",\n        \"price\": 34.95,\n        \"overall_rating\": 4.6,\n        \"total_reviews\": 1,\n        \"availability\": \"In Stock\",\n        \"model\": null,\n        \"material\": \"Various\",\n        \"item_length\": \"6 inches\",\n        \"length\": \"6 inches\",\n        \"clasp\": \"Tang Buckle\",\n        \"model_number\": \"KZ840058\",\n        \"link\": \"https://www.amazon.com/sspa/click?ie=UTF8&spc=MToyNzE5NDQ3ODE1NjI0MTYyOjE3Mjk1MTMyMTA6c3BfYXRmX2Jyb3dzZTozMDAxNzY4NTEzNTQzMDI6OjA6Og&url=%2FCressi-Watch-Strap-Watch-style-Computer%2Fdp%2FB08KBH3NKQ%2Fref%3Dsr_1_1_sspa%3Fdib%3DeyJ2IjoiMSJ9.ITEesU5GMGf8jtr8aIKPGq679iYQQOjTzE53ohj5Re92rq2GJAxiyyZLF5jDNzsRs4YFHRFNjy-rdxOw9sx2kU1UJBH80Uji5EQxuNcHz6qOXgAEGTiC3n-D2ucN0dGgXv6OOXHpw7MT2Tp-c0d40NxoWG0R2520TrpXW8PY5tiS_Ax7MhambR3RFp7GKo6e8fn6r1redYvrYRZ_pzFpC_K0mtvTDyfj8BZutw0aBPNNsKgp7zlHaSY-VJtvWcZe66psgqJMDJZltXHs-o9fOgX2-fm7Q3cKy7jlDwzdygk.FmoV8TRpofxIgN7Ia5Pa1I5_hFIrYaucaYgRWz_Y3t4%26dib_tag%3Dse%26qid%3D1729513210%26s%3Dfashion-mens-intl-ship%26sr%3D1-1-spons%26sp_csd%3Dd2lkZ2V0TmFtZT1zcF9hdGZfYnJvd3Nl%26psc%3D1\"\n    },\n    {\n        \"id\": 1,\n        \"title\": \"Cressi Genuine Watchband, Battery Replacement Dive Watch Computer - Official Spare Parts\",\n        \"price\": 34.95,\n        \"overall_rating\": 4.6,\n        \"total_reviews\": 1,\n        \"availability\": \"In Stock\",\n        \"model\": null,\n        \"material\": \"Various\",\n        \"item_length\": \"6 inches\",\n        \"length\": \"6 inches\",\n        \"clasp\": \"Tang Buckle\",\n        \"model_number\": \"KZ840058\",\n        \"link\": \"https://www.amazon.com/sspa/click?ie=UTF8&spc=MToyNDE1MzY1MzA2NDc3NDQ6MTcyOTUxMjg1MDpzcF9hdGZfYnJvd3NlOjMwMDE3Njg1MTM1NDMwMjo6MDo6&url=%2FCressi-Watch-Strap-Watch-style-Computer%2Fdp%2FB08KBH3NKQ%2Fref%3Dsr_1_1_sspa%3Fdib%3DeyJ2IjoiMSJ9.ITEesU5GMGf8jtr8aIKPGq679iYQQOjTzE53ohj5Re92rq2GJAxiyyZLF5jDNzsRs4YFHRFNjy-rdxOw9sx2kU1UJBH80Uji5EQxuNcHz6rBn9hezmxvKsrSgqMjVZWLZSATL6XbxtqURSrN-Naeq5edjGiyU8NeKF_O6jGu1G_w_VIYvzdwKW6Qh0A_-TDiwK_l3PHYTwUcc-P_dRnDgzWZeYtXJ86nqxscgKb71VW1lLS50fInY1gpPxb3Zq5JdQdukQv5SmoBtcn2ReejLtiE9Y52ov_MQMl6vY558Wg.-6yS_UqpRevjXThLACNEg7DlTQgO53US2vFig-zd9lQ%26dib_tag%3Dse%26qid%3D1729512850%26s%3Dfashion-mens-intl-ship%26sr%3D1-1-spons%26sp_csd%3Dd2lkZ2V0TmFtZT1zcF9hdGZfYnJvd3Nl%26psc%3D1\"\n    },\n    {\n        \"id\": 18,\n        \"title\": \"Casio Men's Vintage F91W-1 Resin Strap Digital Sport Watch\",\n        \"price\": 16.86,\n        \"overall_rating\": 4.5,\n        \"total_reviews\": 34516,\n        \"availability\": \"In Stock\",\n        \"model\": null,\n        \"material\": null,\n        \"item_length\": null,\n        \"length\": null,\n        \"clasp\": null,\n        \"model_number\": null,\n        \"link\": \"https://www.amazon.com/Casio-F91W-1-Classic-Resin-Digital/dp/B000GAWSDG/ref=sr_1_5?dib=eyJ2IjoiMSJ9.ITEesU5GMGf8jtr8aIKPGq679iYQQOjTzE53ohj5Re92rq2GJAxiyyZLF5jDNzsRs4YFHRFNjy-rdxOw9sx2kU1UJBH80Uji5EQxuNcHz6qOXgAEGTiC3n-D2ucN0dGgXv6OOXHpw7MT2Tp-c0d40NxoWG0R2520TrpXW8PY5tiS_Ax7MhambR3RFp7GKo6e8fn6r1redYvrYRZ_pzFpC_K0mtvTDyfj8BZutw0aBPNNsKgp7zlHaSY-VJtvWcZe66psgqJMDJZltXHs-o9fOgX2-fm7Q3cKy7jlDwzdygk.FmoV8TRpofxIgN7Ia5Pa1I5_hFIrYaucaYgRWz_Y3t4&dib_tag=se&qid=1729513210&s=fashion-mens-intl-ship&sr=1-5\"\n    },\n    {\n        \"id\": 6,\n        \"title\": \"Casio Men's Vintage F91W-1 Resin Strap Digital Sport Watch\",\n        \"price\": 16.86,\n        \"overall_rating\": 4.5,\n        \"total_reviews\": 34516,\n        \"availability\": \"In Stock\",\n        \"model\": null,\n        \"material\": null,\n        \"item_length\": null,\n        \"length\": null,\n        \"clasp\": null,\n        \"model_number\": null,\n        \"link\": \"https://www.amazon.com/Casio-F91W-1-Classic-Resin-Digital/dp/B000GAWSDG/ref=sr_1_6?dib=eyJ2IjoiMSJ9.ITEesU5GMGf8jtr8aIKPGq679iYQQOjTzE53ohj5Re92rq2GJAxiyyZLF5jDNzsRs4YFHRFNjy-rdxOw9sx2kU1UJBH80Uji5EQxuNcHz6rBn9hezmxvKsrSgqMjVZWLZSATL6XbxtqURSrN-Naeq5edjGiyU8NeKF_O6jGu1G_w_VIYvzdwKW6Qh0A_-TDiwK_l3PHYTwUcc-P_dRnDgzWZeYtXJ86nqxscgKb71VW1lLS50fInY1gpPxb3Zq5JdQdukQv5SmoBtcn2ReejLtiE9Y52ov_MQMl6vY558Wg.-6yS_UqpRevjXThLACNEg7DlTQgO53US2vFig-zd9lQ&dib_tag=se&qid=1729512850&s=fashion-mens-intl-ship&sr=1-6\"\n    },\n    {\n        \"id\": 5,\n        \"title\": \"Michael Kors Oversized Slim Runway Men's Watch, Stainless Steel Watch for Men\",\n        \"price\": 95,\n        \"overall_rating\": 4.5,\n        \"total_reviews\": 11488,\n        \"availability\": \"In Stock\",\n        \"model\": null,\n        \"material\": null,\n        \"item_length\": null,\n        \"length\": null,\n        \"clasp\": \"Deployment Clasp\",\n        \"model_number\": \"MK8507\",\n        \"link\": \"https://www.amazon.com/Michael-Kors-Runway-Black-MK8507/dp/B01HEVAPSO/ref=sr_1_5?dib=eyJ2IjoiMSJ9.ITEesU5GMGf8jtr8aIKPGq679iYQQOjTzE53ohj5Re92rq2GJAxiyyZLF5jDNzsRs4YFHRFNjy-rdxOw9sx2kU1UJBH80Uji5EQxuNcHz6rBn9hezmxvKsrSgqMjVZWLZSATL6XbxtqURSrN-Naeq5edjGiyU8NeKF_O6jGu1G_w_VIYvzdwKW6Qh0A_-TDiwK_l3PHYTwUcc-P_dRnDgzWZeYtXJ86nqxscgKb71VW1lLS50fInY1gpPxb3Zq5JdQdukQv5SmoBtcn2ReejLtiE9Y52ov_MQMl6vY558Wg.-6yS_UqpRevjXThLACNEg7DlTQgO53US2vFig-zd9lQ&dib_tag=se&qid=1729512850&s=fashion-mens-intl-ship&sr=1-5\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "products",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://0.0.0.0:8000/products?page=1&limit=20&brand=casio",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "8000",
+					"path": [
+						"products"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "limit",
+							"value": "20"
+						},
+						{
+							"key": "min_price",
+							"value": "20",
+							"disabled": true
+						},
+						{
+							"key": "max_price",
+							"value": "50",
+							"disabled": true
+						},
+						{
+							"key": "min_rating",
+							"value": "4.7",
+							"disabled": true
+						},
+						{
+							"key": "brand",
+							"value": "casio"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "price_filtering",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://0.0.0.0:8000/products?page=1&limit=5&min_price=20&max_price=50",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "8000",
+							"path": [
+								"products"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "5"
+								},
+								{
+									"key": "min_price",
+									"value": "20"
+								},
+								{
+									"key": "max_price",
+									"value": "50"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "date",
+							"value": "Mon, 21 Oct 2024 14:14:48 GMT"
+						},
+						{
+							"key": "server",
+							"value": "uvicorn"
+						},
+						{
+							"key": "content-length",
+							"value": "4557"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": 8,\n        \"title\": \"Casio Men's Vintage A158WA-1 Water Resistant Digital Watch\",\n        \"price\": 20.99,\n        \"overall_rating\": 4.6,\n        \"total_reviews\": 44422,\n        \"availability\": \"In Stock\",\n        \"model\": null,\n        \"material\": null,\n        \"item_length\": null,\n        \"length\": null,\n        \"clasp\": \"Foldover Clasp\",\n        \"model_number\": \"A158W-1\",\n        \"link\": \"https://www.amazon.com/Casio-A158WA-1-Water-Resistant-Digital/dp/B000GAYQJ0/ref=sr_1_8?dib=eyJ2IjoiMSJ9.ITEesU5GMGf8jtr8aIKPGq679iYQQOjTzE53ohj5Re92rq2GJAxiyyZLF5jDNzsRs4YFHRFNjy-rdxOw9sx2kU1UJBH80Uji5EQxuNcHz6rBn9hezmxvKsrSgqMjVZWLZSATL6XbxtqURSrN-Naeq5edjGiyU8NeKF_O6jGu1G_w_VIYvzdwKW6Qh0A_-TDiwK_l3PHYTwUcc-P_dRnDgzWZeYtXJ86nqxscgKb71VW1lLS50fInY1gpPxb3Zq5JdQdukQv5SmoBtcn2ReejLtiE9Y52ov_MQMl6vY558Wg.-6yS_UqpRevjXThLACNEg7DlTQgO53US2vFig-zd9lQ&dib_tag=se&qid=1729512850&s=fashion-mens-intl-ship&sr=1-8\"\n    },\n    {\n        \"id\": 20,\n        \"title\": \"Casio Men's Vintage A158WA-1 Water Resistant Digital Watch\",\n        \"price\": 20.99,\n        \"overall_rating\": 4.6,\n        \"total_reviews\": 44422,\n        \"availability\": \"In Stock\",\n        \"model\": null,\n        \"material\": null,\n        \"item_length\": null,\n        \"length\": null,\n        \"clasp\": \"Foldover Clasp\",\n        \"model_number\": \"A158W-1\",\n        \"link\": \"https://www.amazon.com/Casio-A158WA-1-Water-Resistant-Digital/dp/B000GAYQJ0/ref=sr_1_7?dib=eyJ2IjoiMSJ9.ITEesU5GMGf8jtr8aIKPGq679iYQQOjTzE53ohj5Re92rq2GJAxiyyZLF5jDNzsRs4YFHRFNjy-rdxOw9sx2kU1UJBH80Uji5EQxuNcHz6qOXgAEGTiC3n-D2ucN0dGgXv6OOXHpw7MT2Tp-c0d40NxoWG0R2520TrpXW8PY5tiS_Ax7MhambR3RFp7GKo6e8fn6r1redYvrYRZ_pzFpC_K0mtvTDyfj8BZutw0aBPNNsKgp7zlHaSY-VJtvWcZe66psgqJMDJZltXHs-o9fOgX2-fm7Q3cKy7jlDwzdygk.FmoV8TRpofxIgN7Ia5Pa1I5_hFIrYaucaYgRWz_Y3t4&dib_tag=se&qid=1729513210&s=fashion-mens-intl-ship&sr=1-7\"\n    },\n    {\n        \"id\": 10,\n        \"title\": \"Casio Men's Classic Stainless Steel Japanese-Quartz Stainless-Steel Strap, Silver, 21 Casual Watch (Model: AE1200WHD-1A)\",\n        \"price\": 27.5,\n        \"overall_rating\": 4.6,\n        \"total_reviews\": 12542,\n        \"availability\": \"In Stock\",\n        \"model\": null,\n        \"material\": null,\n        \"item_length\": null,\n        \"length\": null,\n        \"clasp\": \"Triple-fold-over-clasp-with-double-push-button-safety\",\n        \"model_number\": \"AE1200WHD-1A\",\n        \"link\": \"https://www.amazon.com/Casio-AE1200WHD-1A-Stainless-Steel-Digital/dp/B0094B79CI/ref=sr_1_10?dib=eyJ2IjoiMSJ9.ITEesU5GMGf8jtr8aIKPGq679iYQQOjTzE53ohj5Re92rq2GJAxiyyZLF5jDNzsRs4YFHRFNjy-rdxOw9sx2kU1UJBH80Uji5EQxuNcHz6rBn9hezmxvKsrSgqMjVZWLZSATL6XbxtqURSrN-Naeq5edjGiyU8NeKF_O6jGu1G_w_VIYvzdwKW6Qh0A_-TDiwK_l3PHYTwUcc-P_dRnDgzWZeYtXJ86nqxscgKb71VW1lLS50fInY1gpPxb3Zq5JdQdukQv5SmoBtcn2ReejLtiE9Y52ov_MQMl6vY558Wg.-6yS_UqpRevjXThLACNEg7DlTQgO53US2vFig-zd9lQ&dib_tag=se&qid=1729512850&s=fashion-mens-intl-ship&sr=1-10\"\n    },\n    {\n        \"id\": 1,\n        \"title\": \"Cressi Genuine Watchband, Battery Replacement Dive Watch Computer - Official Spare Parts\",\n        \"price\": 34.95,\n        \"overall_rating\": 4.6,\n        \"total_reviews\": 1,\n        \"availability\": \"In Stock\",\n        \"model\": null,\n        \"material\": \"Various\",\n        \"item_length\": \"6 inches\",\n        \"length\": \"6 inches\",\n        \"clasp\": \"Tang Buckle\",\n        \"model_number\": \"KZ840058\",\n        \"link\": \"https://www.amazon.com/sspa/click?ie=UTF8&spc=MToyNDE1MzY1MzA2NDc3NDQ6MTcyOTUxMjg1MDpzcF9hdGZfYnJvd3NlOjMwMDE3Njg1MTM1NDMwMjo6MDo6&url=%2FCressi-Watch-Strap-Watch-style-Computer%2Fdp%2FB08KBH3NKQ%2Fref%3Dsr_1_1_sspa%3Fdib%3DeyJ2IjoiMSJ9.ITEesU5GMGf8jtr8aIKPGq679iYQQOjTzE53ohj5Re92rq2GJAxiyyZLF5jDNzsRs4YFHRFNjy-rdxOw9sx2kU1UJBH80Uji5EQxuNcHz6rBn9hezmxvKsrSgqMjVZWLZSATL6XbxtqURSrN-Naeq5edjGiyU8NeKF_O6jGu1G_w_VIYvzdwKW6Qh0A_-TDiwK_l3PHYTwUcc-P_dRnDgzWZeYtXJ86nqxscgKb71VW1lLS50fInY1gpPxb3Zq5JdQdukQv5SmoBtcn2ReejLtiE9Y52ov_MQMl6vY558Wg.-6yS_UqpRevjXThLACNEg7DlTQgO53US2vFig-zd9lQ%26dib_tag%3Dse%26qid%3D1729512850%26s%3Dfashion-mens-intl-ship%26sr%3D1-1-spons%26sp_csd%3Dd2lkZ2V0TmFtZT1zcF9hdGZfYnJvd3Nl%26psc%3D1\"\n    },\n    {\n        \"id\": 11,\n        \"title\": \"Cressi Genuine Watchband, Battery Replacement Dive Watch Computer - Official Spare Parts\",\n        \"price\": 34.95,\n        \"overall_rating\": 4.6,\n        \"total_reviews\": 1,\n        \"availability\": \"In Stock\",\n        \"model\": null,\n        \"material\": \"Various\",\n        \"item_length\": \"6 inches\",\n        \"length\": \"6 inches\",\n        \"clasp\": \"Tang Buckle\",\n        \"model_number\": \"KZ840058\",\n        \"link\": \"https://www.amazon.com/sspa/click?ie=UTF8&spc=MToyNzE5NDQ3ODE1NjI0MTYyOjE3Mjk1MTMyMTA6c3BfYXRmX2Jyb3dzZTozMDAxNzY4NTEzNTQzMDI6OjA6Og&url=%2FCressi-Watch-Strap-Watch-style-Computer%2Fdp%2FB08KBH3NKQ%2Fref%3Dsr_1_1_sspa%3Fdib%3DeyJ2IjoiMSJ9.ITEesU5GMGf8jtr8aIKPGq679iYQQOjTzE53ohj5Re92rq2GJAxiyyZLF5jDNzsRs4YFHRFNjy-rdxOw9sx2kU1UJBH80Uji5EQxuNcHz6qOXgAEGTiC3n-D2ucN0dGgXv6OOXHpw7MT2Tp-c0d40NxoWG0R2520TrpXW8PY5tiS_Ax7MhambR3RFp7GKo6e8fn6r1redYvrYRZ_pzFpC_K0mtvTDyfj8BZutw0aBPNNsKgp7zlHaSY-VJtvWcZe66psgqJMDJZltXHs-o9fOgX2-fm7Q3cKy7jlDwzdygk.FmoV8TRpofxIgN7Ia5Pa1I5_hFIrYaucaYgRWz_Y3t4%26dib_tag%3Dse%26qid%3D1729513210%26s%3Dfashion-mens-intl-ship%26sr%3D1-1-spons%26sp_csd%3Dd2lkZ2V0TmFtZT1zcF9hdGZfYnJvd3Nl%26psc%3D1\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "ask",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"query\": \"Show me products of Samsung\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://0.0.0.0:8000/ask",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "8000",
+					"path": [
+						"ask"
+					],
+					"query": [
+						{
+							"key": "query",
+							"value": "Which product would be best value for budget?",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "casio_products",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"query\": \"Show me products of Casio\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://0.0.0.0:8000/ask",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "8000",
+							"path": [
+								"ask"
+							],
+							"query": [
+								{
+									"key": "query",
+									"value": "Which product would be best value for budget?",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "date",
+							"value": "Tue, 22 Oct 2024 06:23:38 GMT"
+						},
+						{
+							"key": "server",
+							"value": "uvicorn"
+						},
+						{
+							"key": "content-length",
+							"value": "2497"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"query\": \"Show me products of Casio\",\n    \"retrieved_documents\": [\n        \"Casio Men's Classic Stainless Steel Japanese-Quartz Stainless-Steel Strap, Silver, 21 Casual Watch (Model: AE1200WHD-1A). The product costs $27.5. It has an overall rating of 4.6 out of 5 stars. It also has a total of 12,542 ratings reviews. In Stock The model number is AE1200WHD-1A. Material not specified. Item length not provided. The clasp type is Triple-fold-over-clasp-with-double-push-button-safety.\",\n        \"Casio Men's Classic Japanese-Quartz Watch with Resin Strap, Black, 21 (Model: AE1200WH-1A). The product costs $19.99. It has an overall rating of 4.7 out of 5 stars. It also has a total of 8,968 ratings reviews. In Stock The model number is AE-1200WH-1AVDF. Material not specified. Item length not provided. The clasp type is Buckle.\",\n        \"Casio Illuminator AE1500WH Series | 10-Year Battery | LED Backlight | 5-Alarms | 1/100 Sec Stopwatch | Men's Digital Watch. The product costs $21.92. It has an overall rating of 4.6 out of 5 stars. It also has a total of 17,432 ratings reviews. In Stock The model number is AE-1500WH-1AVDF. Material not specified. Item length not provided. The clasp type is Tang Buckle.\",\n        \"Casio Men's Classic W800H-1AV Sport Watch with Black Resin Band. The product costs $19.95. It has an overall rating of 4.6 out of 5 stars. It also has a total of 18,569 ratings reviews. In Stock The model number is W-800H-1AVCF. Material not specified. Item length not provided. The clasp type is Buckle.\",\n        \"Casio Men's Vintage F91W-1 Resin Strap Digital Sport Watch. The product costs $16.86. It has an overall rating of 4.5 out of 5 stars. It also has a total of 34,516 ratings reviews. In Stock Model number not provided. Material not specified. Item length not provided. Clasp type not specified.\",\n        \"Casio Black Out. The product costs $21.92. It has an overall rating of 4.5 out of 5 stars. It also has a total of 3,524 ratings reviews. In Stock The model number is W-800H-1BVCF. Material not specified. Item length not provided. The clasp type is Buckle.\",\n        \"Casio CA53W Vintage Series | Data Bank | 1/100 SEC Stopwatch | Water Resistant | 8 Digit Calculator | Dual Time | Resin Band | Resin Case | Auto Calendar | Daily Alarm | 5 Year Battery. The product costs $21.92. It has an overall rating of 4.6 out of 5 stars. It also has a total of 26,107 ratings reviews. Availability information not provided. The model number is CA-53W-1ER. Material not specified. Item length not provided. The clasp type is Buckle.\"\n    ]\n}"
+				},
+				{
+					"name": "samsung_products",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"query\": \"Show me products of Samsung\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://0.0.0.0:8000/ask",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "8000",
+							"path": [
+								"ask"
+							],
+							"query": [
+								{
+									"key": "query",
+									"value": "Which product would be best value for budget?",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "date",
+							"value": "Tue, 22 Oct 2024 06:24:16 GMT"
+						},
+						{
+							"key": "server",
+							"value": "uvicorn"
+						},
+						{
+							"key": "content-length",
+							"value": "3764"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"query\": \"Show me products of Samsung\",\n    \"retrieved_documents\": [\n        \"SAMSUNG Galaxy Watch Ultra 47mm LTE AI Smartwatch w/Energy Score, Wellness Tips, Heart Rate Tracking, Sleep Monitor, Fitness Tracker, GPS, 2024,Titanium Silver [US Version, 1Yr Manufacturer Warranty]. The product costs $599.99. It has an overall rating of 4.3 out of 5 stars. It also has a total of 577 ratings reviews. In Stock Model number not provided. Material not specified. Item length not provided. Clasp type not specified.\",\n        \"SAMSUNG Galaxy Watch Ultra 47mm LTE AI Smartwatch w/Energy Score, Wellness Tips, Heart Rate Tracking, Sleep Monitor, Fitness Tracker, GPS, 2024,Titanium Silver [US Version, 1Yr Manufacturer Warranty]. The product costs $599.99. It has an overall rating of 4.4 out of 5 stars. It also has a total of 578 ratings reviews. In Stock Model number not provided. Material not specified. Item length not provided. Clasp type not specified.\",\n        \"SAMSUNG Galaxy Watch 7 40mm Bluetooth AI Smartwatch w/Energy Score, Wellness Tips, Heart Rate Tracking, Sleep Monitor, Fitness Tracker, 2024, Green [US Version, 1Yr Manufacturer Warranty]. The product costs $259.99. It has an overall rating of 4.5 out of 5 stars. It also has a total of 577 ratings reviews. In Stock Model number not provided. Material not specified. Item length not provided. Clasp type not specified.\",\n        \"SAMSUNG Galaxy Watch 7 40mm Bluetooth AI Smartwatch w/Energy Score, Wellness Tips, Heart Rate Tracking, Sleep Monitor, Fitness Tracker, 2024, Cream [US Version, 1Yr Manufacturer Warranty]. The product costs $244.99. It has an overall rating of 4.3 out of 5 stars. It also has a total of 577 ratings reviews. In Stock Model number not provided. Material not specified. Item length not provided. Clasp type not specified.\",\n        \"SAMSUNG Galaxy Watch 7 44mm Bluetooth AI Smartwatch w/Energy Score, Wellness Tips, Heart Rate Tracking, Sleep Monitor, Fitness Tracker, 2024, Silver [US Version, 1Yr Manufacturer Warranty]. The product costs $289.99. It has an overall rating of 4.5 out of 5 stars. It also has a total of 577 ratings reviews. In Stock Model number not provided. Material not specified. Item length not provided. Clasp type not specified.\",\n        \"Bulova Men's Classic Sutton 4-Hand Automatic Watch, 24-Hour Sub Dial, Open Aperture, Self-Winding, Exhibition Caseback, Double Curved Mineral Crystal, Luminous Hands, 42mm. The product costs $289.8. It has an overall rating of 4.5 out of 5 stars. It also has a total of 1,827 ratings reviews. In Stock The model number is 97A187. Material not specified. Item length not provided. The clasp type is Deployant Buckle with two pushers.\",\n        \"Movado Men's Bold Verso Blue Ion-Plated Stainless Steel Case and Bracelet with Tachymeter Scale Swiss Quartz Watch,Blue (Model:3600868). The product costs $995.0. It has an overall rating of 4.8 out of 5 stars. It also has a total of 6 ratings reviews. In Stock The model number is 3600868. Material not specified. Item length not provided. The clasp type is Push Button Deployment Clasp.\",\n        \"BOSS Men's SKYLINER Ultra Slim Quartz 40mm Watch | Water Resistant | Premium Minimalistic Timepiece for Business and Casual Wear. The product costs $280.0. It has an overall rating of 4.4 out of 5 stars. It also has a total of 36 ratings reviews. In Stock The model number is 1513827. Material not specified. Item length not provided. The clasp type is Sliding Clasp.\",\n        \"BOSS Men's SKYLINER Ultra Slim Quartz 40mm Watch | Water Resistant | Premium Minimalistic Timepiece for Business and Casual Wear. The product costs $280.0. It has an overall rating of 4.3 out of 5 stars. It also has a total of 36 ratings reviews. In Stock The model number is 1513827. Material not specified. Item length not provided. The clasp type is Sliding Clasp.\"\n    ]\n}"
+				}
+			]
+		}
+	]
+}
