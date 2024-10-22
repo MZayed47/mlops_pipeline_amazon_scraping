@@ -1,0 +1,9 @@
+version: '3'
+
+services:
+  amazon-watches:
+    build: .
+    command: python api_v1.py
+    restart: unless-stopped
+    ports:
+      - "5001:5001"
