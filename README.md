@@ -1,5 +1,22 @@
 # Amazon Product and Review API Documentation
 
+## Table of Contents
+1. [Overview](#overview)
+2. [Base URL](#base-url)
+3. [Endpoints](#endpoints)
+    - [1. Search Products](#1-search-products)
+    - [2. Get Top Products](#2-get-top-products)
+    - [3. Get Product Reviews](#3-get-product-reviews)
+4. [Database Schema](#database-schema-amazon-watches)
+5. [Running the API](#running-the-api)
+6. [Service Deployment](#service-deployment)
+    - [A. Set Up a Conda Environment](#a-set-up-a-conda-environment)
+    - [B. API Organization](#b-api-organization)
+    - [C. Dockerization](#c-dockerization)
+    - [D. Run The Scraping Pipeline in "amazon_watches_v2.py" using cron](#d-run-the-scrapping-pipeline-in-amazon_watches_v2py-using-cron)
+7. [Author](#author)
+
+---
 ## Overview
 This API provides endpoints to search for products, retrieve the top-rated products, and get product reviews from an Amazon database.
 
@@ -132,11 +149,6 @@ Returns a list of reviews for the specified product.
 ]
 ```
 
-#### Example Request:
-```
-GET /products/1/reviews?page=1&limit=5
-```
-
 ---
 
 ## Database Schema (Amazon Watches)
@@ -159,34 +171,6 @@ The table `amazon_watches` stores product and review information with the follow
 
 ---
 
-## Error Handling
-
-### 400 Bad Request
-Occurs when invalid query parameters are provided.
-```json
-{
-    "detail": "Invalid query parameters"
-}
-```
-
-### 404 Not Found
-Occurs when a product or review is not found.
-```json
-{
-    "detail": "Product not found"
-}
-```
-
-### 500 Internal Server Error
-Occurs when an internal server error happens.
-```json
-{
-    "detail": "Internal server error"
-}
-```
-
----
-
 ## Running the API
 
 ### Requirements
@@ -203,6 +187,88 @@ uvicorn main:app --reload
 ```
 
 ---
+
+# Service Deployment
+
+## A. Set Up a Conda Environment
+
+1. Create and activate a new conda environment:
+
+    ```bash
+    conda create -n ml_ops python=3.9
+    conda activate ml_ops
+    ```
+
+## B. API Organization
+
+1. Use the two scripts for API:
+
+    - **api_v1.py**: Holds the main functionality and calls the necessary functions from `utility_v1.py`.
+    - **utility_v1.py**: Contains reusable functions.
+
+## C. Dockerization
+
+1. Export the environment libraries:
+
+    ```bash
+    conda list --export > requirements.txt
+    ```
+
+2. **Clean unnecessary library versions** in `requirements.txt` (recommended).
+
+3. **Dockerize the application**:
+
+    - **Dockerfile**: Copy the necessary files and set up the environment.
+    - **docker-compose.yml**: Automate Docker setup and start the service.
+
+4. Build and run the service:
+
+    ```bash
+    docker-compose build
+    docker-compose up -d
+    ```
+
+    Or combine the steps:
+
+    ```bash
+    docker-compose up -d --build
+    ```
+
+5. **Check container logs**:
+
+    ```bash
+    docker logs <container_id>
+    ```
+
+## D. Run The Scrapping Pipeline in "amazon_watches_v2.py" using cron
+
+### 1. Access the Docker container shell:
+```bash
+docker exec -it <container_id> /bin/bash
+```
+
+### 2. Open the crontab editor within the container:
+```bash
+crontab -e
+```
+
+### 3. Add the cron job to run your Python script every 30 minutes:
+```bash
+*/30 * * * * /usr/bin/python3 /path/to/your/amazon_watches_v2.py >> /path/to/logfile.log 2>&1
+```
+- **`*/30`**: Runs the job every 30 minutes.
+- **`/usr/bin/python3`**: Path to the Python interpreter inside the container (adjust if different).
+- **`/path/to/your/amazon_watches_v2.py`**: Path to your Python script inside the container.
+- **`>> /path/to/logfile.log 2>&1`**: Logs the output and errors to `logfile.log` for debugging purposes (optional).
+
+### 4. Save and exit the crontab editor.
+
+### 5. Ensure the cron service is running:
+You may need to start the cron service inside the container:
+
+```bash
+service cron start
+```
 
 ## Author
 Mashrukh – Sr Data Scientist at SSL Wireless.
