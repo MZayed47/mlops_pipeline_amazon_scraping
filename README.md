@@ -13,7 +13,7 @@
     - [A. Set Up a Conda Environment](#a-set-up-a-conda-environment)
     - [B. API Organization](#b-api-organization)
     - [C. Dockerization](#c-dockerization)
-    - [E. Run The Scraping Pipeline in "amazon_watches_v2.py" using cron](#e-run-the-scraping-pipeline-in-amazon_watches_v2py-using-cron)
+    - [D. Run The Scraping Pipeline in "amazon_watches_v2.py" using cron](#d-run-the-scraping-pipeline-in-amazon_watches_v2py-using-cron)
 7. [Author](#author)
 
 ---
@@ -240,21 +240,35 @@ uvicorn main:app --reload
     docker logs <container_id>
     ```
 
-## E. Run The Scrapping Pipeline in "amazon_watches_v2.py" using cron
+## D. Run The Scrapping Pipeline in "amazon_watches_v2.py" using cron
 
-1. **Access the container shell**:
+### 1. Access the Docker container shell:
+```bash
+docker exec -it <container_id> /bin/bash
+```
 
-    ```bash
-    docker exec -it <container_id> /bin/bash
-    ```
+### 2. Open the crontab editor within the container:
+```bash
+crontab -e
+```
 
-2. ** Check & Run Python scripts inside the container**:
+### 3. Add the cron job to run your Python script every 30 minutes:
+```bash
+*/30 * * * * /usr/bin/python3 /path/to/your/amazon_watches_v2.py >> /path/to/logfile.log 2>&1
+```
+- **`*/30`**: Runs the job every 30 minutes.
+- **`/usr/bin/python3`**: Path to the Python interpreter inside the container (adjust if different).
+- **`/path/to/your/amazon_watches_v2.py`**: Path to your Python script inside the container.
+- **`>> /path/to/logfile.log 2>&1`**: Logs the output and errors to `logfile.log` for debugging purposes (optional).
 
-    ```bash
-    python amazon_watches_v2.py
-    ```
-3. ** Add the scraping pipeline in corn for an interval of 30 minutes**:
+### 4. Save and exit the crontab editor.
 
+### 5. Ensure the cron service is running:
+You may need to start the cron service inside the container:
+
+```bash
+service cron start
+```
 
 ## Author
 Mashrukh – Sr Data Scientist at SSL Wireless.
