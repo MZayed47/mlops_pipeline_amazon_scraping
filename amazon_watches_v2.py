@@ -148,7 +148,7 @@ def get_price(soup):
     
     except (AttributeError, json.JSONDecodeError, KeyError):
         # Handle cases where the price or data is not found or malformed
-        price_amount = ""
+        price_amount = 0
 
     return price_amount
 

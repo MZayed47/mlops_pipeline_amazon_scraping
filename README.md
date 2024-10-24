@@ -252,13 +252,13 @@ docker exec -it <container_id> /bin/bash
 crontab -e
 ```
 
-### 3. Add the cron job to run your Python script every 30 minutes:
+### 3. Add the cron job to run the Python script every 30 minutes:
 ```bash
-*/30 * * * * /usr/bin/python3 /path/to/your/amazon_watches_v2.py >> /path/to/logfile.log 2>&1
+*/30 * * * * docker exec <container_id> python amazon_watches_v2.py >> /path/to/logfile.log 2>&1
 ```
 - **`*/30`**: Runs the job every 30 minutes.
-- **`/usr/bin/python3`**: Path to the Python interpreter inside the container (adjust if different).
-- **`/path/to/your/amazon_watches_v2.py`**: Path to your Python script inside the container.
+- **`docker exec <container_id> python`**: The Python interpreter inside the docker container.
+- **`amazon_watches_v2.py`**: Python script inside the container.
 - **`>> /path/to/logfile.log 2>&1`**: Logs the output and errors to `logfile.log` for debugging purposes (optional).
 
 ### 4. Save and exit the crontab editor.
@@ -271,4 +271,4 @@ service cron start
 ```
 
 ## Author
-Mashrukh – Sr Data Scientist at SSL Wireless.
+Mashrukh Zayed – Sr Data Scientist at SSL Wireless.
