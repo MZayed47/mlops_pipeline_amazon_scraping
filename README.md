@@ -10,10 +10,12 @@
 4. [Database Schema](#database-schema-amazon-watches)
 5. [Running the API](#running-the-api)
 6. [Service Deployment](#service-deployment)
-    - [A. Set Up a Conda Environment](#a-set-up-a-conda-environment)
-    - [B. API Organization](#b-api-organization)
-    - [C. Dockerization](#c-dockerization)
-    - [D. Run The Scraping Pipeline in "amazon_watches_v2.py" using cron](#d-run-the-scrapping-pipeline-in-amazon_watches_v2py-using-cron)
+    - [AWS Elastic Beanstalk Deployment Guide FastAPI & Scraping Task]
+    - [Step 1: Prepare the FastAPI Application]
+    - [Step 2: Set Up Elastic Beanstalk Environment]
+    - [Step 3: Set Up Amazon RDS for PostgreSQL]
+    - [Step 4: Set Up AWS Lambda for Scraping Task]
+    - [Step 5: Deploy the FastAPI Application]
 7. [Author](#author)
 
 ---
@@ -183,92 +185,152 @@ The table `amazon_watches` stores product and review information with the follow
 Run the following command to start the API:
 
 ```bash
-uvicorn main:app --reload
+uvicorn api_v1:app --reload
 ```
 
 ---
 
 # Service Deployment
 
-## A. Set Up a Conda Environment
+## AWS Elastic Beanstalk Deployment Guide FastAPI & Scraping Task
 
-1. Create and activate a new conda environment:
+The following description provides a rough idea on the step-by-step approach I would take to deploying a FastAPI application and a periodic scraping task on AWS using Elastic Beanstalk, Amazon RDS for PostgreSQL, and AWS Lambda for scheduling.
 
-    ```bash
-    conda create -n ml_ops python=3.9
-    conda activate ml_ops
-    ```
+### Why Elastic Beanstalk?
+- **Managed Environment**: Elastic Beanstalk handles infrastructure management, load balancing, scaling, and monitoring.
+- **Scalability**: Automatically adjusts based on application traffic.
+- **Integration**: Easily integrates with AWS services like RDS, S3, CloudWatch, and IAM.
 
-## B. API Organization
+---
 
-1. Use the two scripts for API:
+## Step 1: Prepare the FastAPI Application
 
-    - **api_v1.py**: Holds the main functionality and calls the necessary functions from `utility_v1.py`.
-    - **utility_v1.py**: Contains reusable functions.
+### 1.1 Create a Project Structure
+Organize the project directory as given in this GitHub repo within an "app" folder or similar, and the Dockerfile in the project-root:
 
-## C. Dockerization
-
-1. Export the environment libraries:
-
-    ```bash
-    conda list --export > requirements.txt
-    ```
-
-2. **Clean unnecessary library versions** in `requirements.txt` (recommended).
-
-3. **Dockerize the application**:
-
-    - **Dockerfile**: Copy the necessary files and set up the environment.
-    - **docker-compose.yml**: Automate Docker setup and start the service.
-
-4. Build and run the service:
-
-    ```bash
-    docker-compose build
-    docker-compose up -d
-    ```
-
-    Or combine the steps:
-
-    ```bash
-    docker-compose up -d --build
-    ```
-
-5. **Check container logs**:
-
-    ```bash
-    docker logs <container_id>
-    ```
-
-## D. Run The Scrapping Pipeline in "amazon_watches_v2.py" using cron
-
-### 1. Access the Docker container shell:
-```bash
-docker exec -it <container_id> /bin/bash
+```
+project-root/
+├── app/
+│   ├── api_v1.py                # FastAPI app
+│   ├── utility_v1.py            # necessary functions script
+│   ├── amazon_watches_v2.py     # perioidic scrapping
+│   └── requirements.txt         # Dependencies
+└── Dockerfile                   # Docker configuration for FastAPI
 ```
 
-### 2. Open the crontab editor within the container:
-```bash
-crontab -e
+### 1.2 Write Dockerfile
+Use a `Dockerfile` to containerize the FastAPI application:
+
+```dockerfile
+# Dockerfile
+FROM python:3.9
+
+WORKDIR /app
+
+COPY requirements.txt .
+RUN pip install -r requirements.txt
+
+COPY . .
+
+CMD ["uvicorn", "app.api_v1:app", "--host", "0.0.0.0", "--port", "8000"]
 ```
 
-### 3. Add the cron job to run the Python script every 30 minutes:
-```bash
-*/30 * * * * docker exec <container_id> python amazon_watches_v2.py >> /path/to/logfile.log 2>&1
+### 1.3 Add Dependencies
+List the dependencies in `requirements.txt`. I have is mentioned above.
+
+---
+
+## Step 2: Set Up Elastic Beanstalk Environment
+
+### 2.1 Create an Elastic Beanstalk Application
+1. Navigate to the **Elastic Beanstalk** service in the AWS Console.
+2. **Create Application** and select **Web server environment**.
+3. Configure the environment with the following options:
+   - **Platform**: Choose "Docker."
+   - **Application Code**: Upload the `project-root` folder.
+
+### 2.2 Configure Elastic Beanstalk Environment
+1. Under **Configuration**, adjust settings:
+   - **Capacity**: Set minimum and maximum instance count for scaling.
+   - **Load Balancer**: Ensure it’s set up for auto-scaling.
+   - **Database**: Link to an **Amazon RDS PostgreSQL** database (created in Step 3).
+
+---
+
+## Step 3: Set Up Amazon RDS for PostgreSQL
+
+1. Navigate to **Amazon RDS** in the AWS Console.
+2. Create a new PostgreSQL instance:
+   - Select the latest PostgreSQL version.
+   - Choose instance size according to expected load (I usually use `db.t3.micro` for development).
+3. Configure security groups to allow the Beanstalk environment to access the RDS instance.
+4. Note the **endpoint**, **database name**, **username**, and **password** for database connection in FastAPI.
+
+### 3.1 Configure Database Connection in FastAPI
+In `api_v1.py`, currently I have the connection code loaded from JSON file. But for AWS, we should add the database connection code using environment variables (.env) for security and load it in "startup" event:
+
+```python
+import os
+from fastapi import FastAPI
+import psycopg2
+
+app = FastAPI()
+
+DATABASE_URL = os.getenv("DATABASE_URL")
+
+@app.on_event("startup")
+async def startup():
+    app.state.db = psycopg2.connect(DATABASE_URL)
 ```
-- **`*/30`**: Runs the job every 30 minutes.
-- **`docker exec <container_id> python`**: The Python interpreter inside the docker container.
-- **`amazon_watches_v2.py`**: Python script inside the container.
-- **`>> /path/to/logfile.log 2>&1`**: Logs the output and errors to `logfile.log` for debugging purposes (optional).
 
-### 4. Save and exit the crontab editor.
+---
 
-### 5. Ensure the cron service is running:
-You may need to start the cron service inside the container:
+## Step 4: Set Up AWS Lambda for Scraping Task
 
-```bash
-service cron start
-```
+1. Navigate to **AWS Lambda** in the Console.
+2. Create a new Lambda function for the scraping task:
+   - **Runtime**: Python 3.x
+   - **Permissions**: Assign an IAM role allowing S3 access (if you’re storing scraped data in S3).
+
+3. Write the scraping logic from `amazon_watches_v2.py` in the Lambda function and schedule it:
+   - Use **Amazon EventBridge** to run the function at intervals (Suppose, every 30 minutes).
+
+---
+
+## Step 5: Deploy the FastAPI Application
+
+### 5.1 Deploy Using Elastic Beanstalk CLI (Optional)
+1. Install the Elastic Beanstalk CLI and configure it:
+   ```bash
+   pip install awsebcli
+   eb init -p docker my-fastapi-app
+   ```
+2. Create an Elastic Beanstalk environment and deploy:
+   ```bash
+   eb create my-fastapi-env
+   eb deploy
+   ```
+
+### 5.2 Deploy Using AWS Console
+- From the Elastic Beanstalk Console, navigate to the application and click **Upload and Deploy**.
+- Choose the Dockerized application bundle and deploy.
+
+---
+
+## Step 6: Domain Name and SSL (Optional, if needed)
+
+1. Set up **Amazon Route 53** for custom domain management.
+2. Use **AWS Certificate Manager (ACM)** to provision SSL certificates for HTTPS.
+
+---
+
+## Step 7: Monitoring and Scaling
+
+1. Set up **Amazon CloudWatch** to monitor metrics like CPU usage, memory, and request latency.
+2. Enable **Auto Scaling** within the Elastic Beanstalk environment to automatically adjust the instance count based on demand.
+
+---
+
 
 ## Author
 Mashrukh Zayed – Sr Data Scientist at SSL Wireless.
