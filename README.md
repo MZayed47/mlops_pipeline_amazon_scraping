@@ -10,12 +10,12 @@
 4. [Database Schema](#database-schema-amazon-watches)
 5. [Running the API](#running-the-api)
 6. [Service Deployment](#service-deployment)
-    - [AWS Elastic Beanstalk Deployment Guide FastAPI & Scraping Task]
-    - [Step 1: Prepare the FastAPI Application]
-    - [Step 2: Set Up Elastic Beanstalk Environment]
-    - [Step 3: Set Up Amazon RDS for PostgreSQL]
-    - [Step 4: Set Up AWS Lambda for Scraping Task]
-    - [Step 5: Deploy the FastAPI Application]
+    - [AWS Elastic Beanstalk Deployment Guide FastAPI & Scraping Task](#aws-elastic-beanstalk-deployment-guide-fastapi--scraping-task)
+    - [Step 1: Prepare the FastAPI Application](#step-1-prepare-the-fastapi-application)
+    - [Step 2: Set Up Elastic Beanstalk Environment](#step-2-set-up-elastic-beanstalk-environment)
+    - [Step 3: Set Up Amazon RDS for PostgreSQL](#step-3-set-up-amazon-rds-for-postgresql)
+    - [Step 4: Set Up AWS Lambda for Scraping Task](#step-4-set-up-aws-lambda-for-scraping-task)
+    - [Step 5: Deploy the FastAPI Application](#step-5-deploy-the-fastapi-application)
 7. [Author](#author)
 
 ---
